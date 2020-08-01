@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateDriver1596226631809 implements MigrationInterface {
+export class CreateOperator1596291086834 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'drivers',
+        name: 'operators',
         columns: [
           {
             name: 'id',
@@ -37,6 +37,6 @@ export class CreateDriver1596226631809 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('drivers');
+    await queryRunner.dropTable('operators');
   }
 }
