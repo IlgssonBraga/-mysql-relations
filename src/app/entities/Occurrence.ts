@@ -6,13 +6,14 @@ import {
   UpdateDateColumn,
   ManyToOne,
   OneToMany,
+  BaseEntity,
 } from 'typeorm';
 
 import Driver from './Driver';
 import Operator from './Operator';
 
 @Entity('occurrences')
-class Occurrence {
+class Occurrence extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -38,7 +39,7 @@ class Occurrence {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  user_id: number;
+  driver_id: number;
 
   @ManyToOne(() => Operator, (operator: Operator) => operator.id, {
     onDelete: 'CASCADE',
