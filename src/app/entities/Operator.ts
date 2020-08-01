@@ -1,12 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 
 @Entity('operators')
-class Operator {
+class Operator extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  first_name: string;
+  fist_name: string;
 
   @Column()
   last_name: string;
