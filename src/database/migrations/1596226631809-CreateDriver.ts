@@ -10,6 +10,8 @@ export class CreateDriver1596226631809 implements MigrationInterface {
             name: 'id',
             type: 'int(11)',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'fist_name',

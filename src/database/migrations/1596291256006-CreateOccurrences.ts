@@ -15,6 +15,8 @@ export class CreateOccurrences1596291256006 implements MigrationInterface {
             name: 'id',
             type: 'int(11)',
             isPrimary: true,
+            isGenerated: true,
+            generationStrategy: 'increment',
           },
           {
             name: 'driver_id',

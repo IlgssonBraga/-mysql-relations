@@ -25,10 +25,10 @@ class Occurrence {
   @Column()
   observation: string;
 
-  @CreateDateColumn('timestamp')
+  @CreateDateColumn()
   createdAt: Date;
 
-  @UpdateDateColumn('timestamp')
+  @UpdateDateColumn()
   updatedAt: Date;
 
   @Column()

@@ -6,7 +6,7 @@ class Driver extends BaseEntity {
   id: number;
 
   @Column()
-  first_name: string;
+  fist_name: string;
 
   @Column()
   last_name: string;

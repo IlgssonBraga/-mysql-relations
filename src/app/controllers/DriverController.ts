@@ -3,9 +3,9 @@ import Driver from '../entities/Driver';
 
 class DriverController {
   async store(req: Request, res: Response): Promise<Response<Driver>> {
-    const { first_name, last_name, cpf, email, number } = req.body;
+    const { fist_name, last_name, cpf, email, number } = req.body;
     const driver = Driver.create({
-      first_name,
+      fist_name,
       last_name,
       cpf,
       email,
