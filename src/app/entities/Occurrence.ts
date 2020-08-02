@@ -4,9 +4,9 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  OneToMany,
   BaseEntity,
+  JoinColumn,
+  ManyToOne,
 } from 'typeorm';
 
 import Driver from './Driver';
@@ -35,16 +35,22 @@ class Occurrence extends BaseEntity {
   @Column()
   finishedAt: Date;
 
-  @OneToMany(() => Driver, (driver: Driver) => driver.id, {
-    onDelete: 'RESTRICT',
-    onUpdate: 'RESTRICT',
+  @ManyToOne(_ => Driver, {
+    eager: true,
   })
+  @JoinColumn({ name: 'driver_id' })
+  driver: Driver;
+
+  @ManyToOne(_ => Operator, {
+    eager: true,
+  })
+  @JoinColumn({ name: 'operator_id' })
+  operator: Operator;
+
+  @Column()
   driver_id: number;
 
-  @ManyToOne(() => Operator, (operator: Operator) => operator.id, {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-  })
+  @Column()
   operator_id: number;
 }
 
