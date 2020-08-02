@@ -25,6 +25,37 @@ class OccurenceController {
 
     return res.json(occurrences);
   }
+
+  async update(req: Request, res: Response): Promise<Response<Occurrence>> {
+    const { id } = req.params;
+    const { called_authority, status, observation } = req.body;
+    const occurrence = await Occurrence.findOne(id);
+
+    if (!occurrence) {
+      return res.status(404).json({ message: 'Occurence not found!' });
+    }
+
+    Object.assign(occurrence, { called_authority, status, observation });
+
+    await occurrence.save();
+
+    return res.json(occurrence);
+  }
+
+  async patch(req: Request, res: Response): Promise<Response<Occurrence>> {
+    const { id } = req.params;
+    const occurrence = await Occurrence.findOne(id);
+
+    if (!occurrence) {
+      return res.status(404).json({ message: 'Occurence not found!' });
+    }
+
+    occurrence.finishedAt = new Date();
+
+    await occurrence.save();
+
+    return res.json(occurrence);
+  }
 }
 
 export default new OccurenceController();

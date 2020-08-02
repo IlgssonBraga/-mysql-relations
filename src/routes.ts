@@ -9,5 +9,7 @@ router.post('/drivers', DriverController.store);
 router.post('/operators', OperatorController.store);
 router.post('/occurrences/:operator/:driver', OccurrenceController.store);
 router.get('/occurrences', OccurrenceController.index);
+router.put('/occurrences/:id', OccurrenceController.update);
+router.patch('/occurrences/:id', OccurrenceController.patch);
 
 export default router;
