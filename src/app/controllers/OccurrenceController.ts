@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import Occurrence from '../entities/Occurrence';
+import { io } from '../../server';
 
 class OccurenceController {
   async store(req: Request, res: Response): Promise<Response<Occurrence>> {
@@ -17,11 +18,15 @@ class OccurenceController {
 
     await occurrence.save();
 
+    io.emit('newOccurrence', occurrence);
+
     return res.json(occurrence);
   }
 
   async index(req: Request, res: Response): Promise<Response<Occurrence[]>> {
     const occurrences = await Occurrence.find();
+
+    io.emit('teste2', occurrences);
 
     return res.json(occurrences);
   }
